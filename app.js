@@ -62,7 +62,9 @@ sequelize.authenticate()
             console.log("Server listen on port 5000");
         })
     })
-
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 // ngrok.connect({
 //     addr: 5000,
