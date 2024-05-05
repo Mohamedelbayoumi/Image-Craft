@@ -1,6 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_TEST_SECRET_KEY)
 
-const PaymentIntent = require('../models/paymentIntent')
 const Card = require('../models/card')
 const Order = require('../models/order')
 const Cart = require('../models/cart')
@@ -44,7 +43,7 @@ async function makePaymentIntent(req, res) {
     //     publishableKey : process.env.STRIPE_TEST_PUBLISHABLE_KEY
     // })
 
-    const card = getCardData(req, res)
+    const card = await getCardData(req, res)
 
     res.status(201).json({ clientSecret: paymentIntent.client_secret, cardData: card })
 
@@ -136,6 +135,5 @@ async function getCardData(req, res) {
 module.exports = {
     makePaymentIntent,
     saveCardData,
-    getCardData,
     createOrder
 }
