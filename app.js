@@ -4,7 +4,7 @@ require("express-async-errors")
 
 const express = require('express')
 const cookieParser = require('cookie-parser')
-const ngrok = require('@ngrok/ngrok');
+const ngrok = require('@ngrok/ngrok')
 
 const sequelize = require('./config/dbConnection')
 
@@ -46,26 +46,21 @@ app.use((err, req, res, next) => {
     res.status(err.statusCode).json({ message: err.message, err: err.name })
 })
 
-
-// sequelize.sync().then(() => {
-//     console.log("DataBase Connected")
-//     app.listen(5000, () => {
-//         console.log("Server listen on port 5000");
-//     })
-// })
-
-
 sequelize.authenticate()
     .then(() => {
         console.log("DataBase Connected")
         const server = app.listen(port, () => {
-            console.log("Server listen on port 5000");
+            console.log(`Server listen on port ${port}`);
         })
+        server.keepAliveTimeout = 120 * 1000
+        server.headersTimeout = 120 * 1000
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
     });
 
+
+// For Development Testing :
 // ngrok.connect({
 //     addr: 5000,
 //     authtoken_from_env: true
