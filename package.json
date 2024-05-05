@@ -1,17 +1,19 @@
 {
   "name": "test",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Image Craft API",
+  "main": "app.js",
+  "repository": "https://github.com/Mohamedelbayoumi/Image-Craft.git",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev:start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mohamed Elbayoumi",
   "license": "ISC",
   "engines": {
-    "node": ">=18.12.1 < 19.0.0"
+    "node": ">=18.12.1"
   },
   "dependencies": {
     "axios": "^1.6.8",

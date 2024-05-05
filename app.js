@@ -48,19 +48,21 @@ app.use((err, req, res, next) => {
 
 
 // sequelize.sync().then(() => {
-//             app.listen(5000,() => {
-//                 console.log("Server listen on port 5000");
-//         })
+//     console.log("DataBase Connected")
+//     app.listen(5000, () => {
+//         console.log("Server listen on port 5000");
 //     })
+// })
 
 
-const server = app.listen(port, () => {
-    console.log("Server listen on port 5000");
-})
+sequelize.authenticate()
+    .then(() => {
+        console.log("DataBase Connected")
+        const server = app.listen(port, () => {
+            console.log("Server listen on port 5000");
+        })
+    })
 
-
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
 
 // ngrok.connect({
 //     addr: 5000,
