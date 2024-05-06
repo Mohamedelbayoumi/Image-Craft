@@ -27,6 +27,10 @@ const Image = sequelize.define('Image', {
     noOfLikes: {
         type: DataTypes.INTEGER.UNSIGNED,
         defaultValue: 0
+    },
+    imageKitId: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     createdAt: true,

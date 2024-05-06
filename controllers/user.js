@@ -1,9 +1,9 @@
 
-const { unlink } = require("fs");
-
 const User = require("../models/user");
 const Image = require("../models/image");
 const Order = require("../models/order");
+
+const imageKit = require("../util/image-kit")
 
 async function likeImage(req, res) {
 
@@ -122,31 +122,22 @@ async function deleteUser(req, res, next) {
 
   const images = await Image.findAll({
     where: {
-      UserId: userId,
+      UserId: 1,
     },
-    attributes: ["imagePath"],
+    attributes: ["imageKitId"]
   });
 
-  let imagePath = "";
-
-  for (let i = 0; i < images.length; i++) {
-    imagePath = images[i].imagePath;
-    unlink(imagePath, (err) => {
-      if (err) {
-        return next(err)
-      }
-    });
-  }
+  const imagesIds = images.map((e) => {
+    return e.imageKitId
+  })
 
   const user = await User.findByPk(userId, {
-    attributes: ["id", "imageProfilePath"]
+    attributes: ["id", "imageKitId"]
   })
 
-  unlink(user.imageProfilePath, (err) => {
-    if (err) {
-      return next(err)
-    }
-  })
+  imagesIds.push(user.imageKitId)
+
+  await imageKit.bulkDeleteFiles(imagesIds)
 
   await user.destroy()
 
@@ -180,11 +171,19 @@ async function loadUserProfile(req, res) {
 }
 
 async function editImageProfie(req, res) {
+
   const userId = req.userId;
+
+  const response = await imageKit.upload({
+    file: req.file.buffer,
+    folder: "profile-images",
+    fileName: req.file.originalname
+  })
 
   await User.update(
     {
-      imageProfilePath: req.file.path,
+      imageProfilePath: response.thumbnailUrl,
+      imageKitId: response.fileId
     },
     {
       where: {

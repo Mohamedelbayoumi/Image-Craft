@@ -37,7 +37,7 @@ const checkAuthentication = require('../middleware/isAuth')
 
 router.get('/images', getImages)
 
-router.post('/images', checkAuthentication, passTheImage('./images'), validateImage, uploadImage)
+router.post('/images', checkAuthentication, passTheImage, validateImage, uploadImage)
 
 router.get('/images/search', getImagesByName)
 

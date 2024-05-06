@@ -27,7 +27,7 @@ router.get("/profile/ordered-images", checkAuthentication, getOrderedImages);
 
 router.patch("/profile/image", [
   checkAuthentication,
-  passTheImage("./profile-images"),
+  passTheImage,
   editImageProfie,
 ]);
 

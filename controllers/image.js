@@ -1,10 +1,11 @@
-const sizeOf = require("image-size");
 const { Op } = require("sequelize");
-const { unlink } = require("fs")
 
 const Image = require("../models/image");
 const Caterogy = require("../models/caterogy");
 const User = require("../models/user");
+
+const imageKit = require("../util/image-kit")
+
 
 async function getImages(req, res) {
   const page = +req.query.page || 1;
@@ -33,13 +34,21 @@ async function uploadImage(req, res) {
     attributes: ["id"],
   });
 
+
+  const response = await imageKit.upload({
+    file: req.file.buffer,
+    folder: "images",
+    fileName: imageName
+  })
+
   await imageCaterogy.createImage({
     imageName,
     price,
     description,
     location,
-    imagePath: req.file.path,
+    imagePath: response.thumbnailUrl,
     UserId: userId,
+    imageKitId: response.fileId
   });
 
   res.status(201).json({ message: "Image Uploaded Successfully" });
@@ -63,16 +72,15 @@ async function getSingleImage(req, res, next) {
     return res.status(404).json({ error: "Image Not Found" });
   }
 
-  const dimensions = sizeOf(image.imagePath);
+  const response = await imageKit.getFileDetails(image.imageKitId)
 
   const user = await User.findByPk(image.UserId, {
     attributes: ["username", "imageProfilePath"]
   })
 
   const imageDetails = {
-    height: dimensions.height,
-    width: dimensions.width,
-    type: dimensions.type,
+    height: response.height,
+    width: response.width,
     uploadDate: image.createdAt,
     location: image.location,
     caterogy: image.Caterogy.caterogyName,
@@ -183,18 +191,14 @@ async function deleteUploadedImage(req, res, next) {
   const imageId = req.query.imageId
 
   const image = await Image.findByPk(imageId, {
-    attributes: ["id", "imagePath"]
+    attributes: ["id", "imageKitId"]
   })
 
   if (!image) {
     return res.status(404).json({ Messge: "Image Not Found" })
   }
 
-  unlink(image.imagePath, (err) => {
-    if (err) {
-      return next(err)
-    }
-  })
+  await imageKit.deleteFile(image.imageKitId)
 
   await image.destroy()
 
