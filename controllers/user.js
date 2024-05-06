@@ -137,7 +137,11 @@ async function deleteUser(req, res, next) {
 
   imagesIds.push(user.imageKitId)
 
-  await imageKit.bulkDeleteFiles(imagesIds)
+  if (imagesIds.length > 0) {
+
+    await imageKit.bulkDeleteFiles(imagesIds)
+
+  }
 
   await user.destroy()
 
