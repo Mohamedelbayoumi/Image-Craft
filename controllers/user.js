@@ -122,7 +122,7 @@ async function deleteUser(req, res, next) {
 
   const images = await Image.findAll({
     where: {
-      UserId: 1,
+      UserId: userId,
     },
     attributes: ["imageKitId"]
   });
