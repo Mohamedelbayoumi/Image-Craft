@@ -3,9 +3,9 @@
 
 const jwt = require('jsonwebtoken')
 
-async function authenticate(res, userId, expirationDate) {
+async function authenticate(res, expirationDate, userData) {
 
-    const accessToken = jwt.sign({ userId },
+    const accessToken = jwt.sign({ userId: userData.userId },
         process.env.ACCESS_TOKEN_SECRET_KEY, { expiresIn: expirationDate })
 
     // const refreshToken = jwt.sign({userId},
@@ -17,7 +17,7 @@ async function authenticate(res, userId, expirationDate) {
     //     sameSite: 'strict'
     // })
 
-    res.status(200).json({ message: 'login successfully', accessToken })
+    res.status(200).json({ accessToken, userData })
 
 }
 

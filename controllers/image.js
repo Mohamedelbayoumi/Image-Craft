@@ -75,7 +75,7 @@ async function getSingleImage(req, res, next) {
   const response = await imageKit.getFileDetails(image.imageKitId)
 
   const user = await User.findByPk(image.UserId, {
-    attributes: ["username", "imageProfilePath"]
+    attributes: ["id", "username", "imageProfilePath"]
   })
 
   const imageDetails = {
@@ -96,7 +96,8 @@ async function getSingleImage(req, res, next) {
 
   const userData = {
     username: user.username,
-    profileImage: user.imageProfilePath
+    profileImage: user.imageProfilePath,
+    userId: user.id
   }
 
   res.status(200).json({ imageDetails, imageData, userData });

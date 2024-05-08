@@ -149,7 +149,7 @@ async function deleteUser(req, res, next) {
 }
 
 async function loadUserProfile(req, res) {
-  const userId = req.userId;
+  const userId = req.query.userId || req.userId;
 
   const user = await User.findByPk(userId, {
     attributes: [

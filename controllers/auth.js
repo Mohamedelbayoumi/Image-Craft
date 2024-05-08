@@ -64,11 +64,18 @@ async function loginUser(req, res) {
         return res.status(401).json({ error: 'Invalid Email or Password' })
     }
 
+    const userData = {
+        userId: user.id,
+        userName: user.username,
+        email: user.email,
+        phoneNumber: user.phoneNumber
+    }
+
     if (req.params.device == 'web') {
-        authenticate(res, user.id, '2 days')
+        authenticate(res, '2 days', userData)
     }
     else {
-        authenticate(res, user.id, '30 days')
+        authenticate(res, '30 days', userData)
     }
 
 }
