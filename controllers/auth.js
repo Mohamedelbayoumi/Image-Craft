@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 const qs = require('querystring')
 const axios = require('axios').default
+const { Op } = require("sequelize");
 
 const User = require('../models/user')
 const Otp = require('../models/otp')
@@ -26,12 +27,24 @@ async function registerUser(req, res) {
 
     const user = await User.findOne({
         where: {
-            email: email
+            [Op.or]: [
+                { email: email },
+                { userName: userName },
+                { phoneNumber: phoneNumber }
+            ]
         }
     })
 
-    if (user) {
+    if (user.email === email) {
         return res.status(403).json({ message: 'Email already exists' })
+    }
+
+    else if (user.username === userName) {
+        return res.status(403).json({ message: "The name is already used" })
+    }
+
+    else if (user.phoneNumber === phoneNumber) {
+        return res.status(403).json({ message: "The phone number is already existed" })
     }
 
     const hashedPassword = await bcrypt.hash(password, 12)
