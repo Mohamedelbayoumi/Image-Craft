@@ -133,8 +133,12 @@ async function forgetPassword(req, res) {
         subject: "Password Reset",
         html: `<h1>Hi there</h1>
         <p>Looks like a requset made to reset the
-        password for your ${user.username} image craft account.
-        No Problem! You can use the code below to reset your password</p>
+        password for your ${user.username} image craft account. 
+        No Problem! You can use the code below to reset your password. 
+        Please note that this OTP is valid for 30 minutes from the time this email was sent. 
+        You have a maximum of 3 attempts to enter the OTP correctly. 
+        After 3 unsuccessful attempts, the OTP will be invalid. 
+        Kindly ensure you enter the OTP carefully.</p>
         <p>The Code is ${otp}</p>`
     })
 
@@ -206,8 +210,8 @@ async function createNewPassword(req, res) {
         attributes: ['value', 'verification']
     })
 
-    if (otp.verification == false) {
-        return res.status(403).json({ message: "Invalid request. User has to repeat reset psssword process again" })
+    if (otp.verification == false || !otp) {
+        return res.status(403).json({ message: "Invalid request. User has to repeat reset psssword process " })
     }
 
     await otp.destroy()
