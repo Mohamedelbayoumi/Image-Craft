@@ -35,16 +35,18 @@ async function registerUser(req, res) {
         }
     })
 
-    if (user.email === email) {
-        return res.status(403).json({ message: 'Email already exists' })
-    }
+    if (user) {
+        if (user.email === email) {
+            return res.status(403).json({ message: 'Email already exists' })
+        }
 
-    else if (user.username === userName) {
-        return res.status(403).json({ message: "The name is already used" })
-    }
+        else if (user.username === userName) {
+            return res.status(403).json({ message: "The name is already used" })
+        }
 
-    else if (user.phoneNumber === phoneNumber) {
-        return res.status(403).json({ message: "The phone number is already existed" })
+        else if (user.phoneNumber === phoneNumber) {
+            return res.status(403).json({ message: "The phone number is already existed" })
+        }
     }
 
     const hashedPassword = await bcrypt.hash(password, 12)
