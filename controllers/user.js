@@ -75,7 +75,8 @@ async function getLikedImages(req, res) {
     return res.status(404).json({ error: "No Liked Images Found" });
   }
 
-  res.status(200).json(user.Images);
+  res.status(200).json({ data: user.Images });
+
 }
 
 async function getUploadedImages(req, res) {
@@ -88,7 +89,7 @@ async function getUploadedImages(req, res) {
     attributes: ["id", "imagePath"],
   });
 
-  res.status(200).json(images);
+  res.status(200).json({ data: images });
 }
 
 async function getOrderedImages(req, res) {
@@ -113,7 +114,8 @@ async function getOrderedImages(req, res) {
     return res.status(404).json({ error: "No Order found" });
   }
 
-  res.status(200).json(order.Images);
+  res.status(200).json({ data: order.Images });
+
 }
 
 async function deleteUser(req, res, next) {
@@ -198,8 +200,6 @@ async function editImageProfie(req, res) {
 
   res.status(200).json({ Messge: "Image Changed Successfully" });
 }
-
-
 
 module.exports = {
   likeImage,

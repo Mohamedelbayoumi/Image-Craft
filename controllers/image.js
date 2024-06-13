@@ -19,7 +19,7 @@ async function getImages(req, res) {
   if (!images) {
     return res.status(404).json({ error: "No Images Found" });
   }
-  res.status(200).json(images);
+  res.status(200).json({ data: images });
 }
 
 async function uploadImage(req, res) {
@@ -146,7 +146,7 @@ async function getCaterogyImages(req, res) {
     return res.status(404).json({ error: "No Images Found" });
   }
 
-  res.status(200).json(images);
+  res.status(200).json({ data: images });
 }
 
 async function getImagesByName(req, res) {
@@ -165,7 +165,7 @@ async function getImagesByName(req, res) {
     return res.status(404).json({ message: "No Images Found" });
   }
 
-  res.status(200).json(images);
+  res.status(200).json({ data: images });
 }
 
 async function getImagesByPrice(req, res) {
@@ -184,7 +184,7 @@ async function getImagesByPrice(req, res) {
     return res.status(404).json({ message: "No Images Found" });
   }
 
-  res.status(200).json(images);
+  res.status(200).json({ data: images });
 }
 
 async function deleteUploadedImage(req, res, next) {
@@ -206,6 +206,45 @@ async function deleteUploadedImage(req, res, next) {
   res.status(200).json({ Messge: "Image Deleted Successfully" })
 }
 
+async function searchByImage(req, res, next) {
+  const base64Image = req.file.buffer.toString('base64');
+
+  const url = 'http://127.0.0.1:8080/search_image';
+  const data = { image: base64Image };
+
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json())
+    .then(async (data) => {
+      console.log(data)
+      const caterogyName = data.caterogy
+
+      const caterogy = await Caterogy.findOne({
+        where: {
+          caterogyName,
+        },
+        attributes: ["id"],
+      });
+
+      const images = await Image.findAll({
+        where: {
+          CaterogyId: caterogy.id,
+        },
+        attributes: ["id", "imageName", "price", "imagePath"]
+      });
+
+      if (!images) {
+        return res.status(404).json({ error: "No Images Found" });
+      }
+
+      res.status(200).json({ data: images });
+    })
+    .catch(error => next(error));
+}
+
 module.exports = {
   getImages,
   uploadImage,
@@ -213,5 +252,6 @@ module.exports = {
   getCaterogyImages,
   getImagesByName,
   getImagesByPrice,
-  deleteUploadedImage
+  deleteUploadedImage,
+  searchByImage
 };
