@@ -6,7 +6,8 @@ const fileFilter = (req, file, cb) => {
         cb(null, true)
     }
     else {
-        cb('Error: Images Only!', false)
+        req.fileType = '(PNG OR JPG OR JPEG) Images Only!'
+        cb(null, false, req.fileType)
     }
 }
 
