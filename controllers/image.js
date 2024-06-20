@@ -6,23 +6,33 @@ const User = require("../models/user");
 
 const imageKit = require("../util/image-kit")
 
+const filterImages = require("../util/isLiked")
+
 
 async function getImages(req, res) {
-  const page = +req.query.page || 1;
 
-  const images = await Image.findAll({
+  let images = await Image.findAll({
     attributes: ["id", "imageName", "price", "imagePath"],
-    limit: 2,
-    offset: (page - 1) * 2, // skip images
+    raw: true
   });
+
 
   if (!images) {
     return res.status(404).json({ error: "No Images Found" });
   }
+
+  images = await filterImages(req, images)
+
+
   res.status(200).json({ data: images });
 }
 
 async function uploadImage(req, res) {
+
+  if (req.fileType) {
+    return res.status(400).json({ errorMessage: req.fileType })
+  }
+
   const userId = req.userId;
 
   const { caterogy, imageName, price, description, location } = req.body;
@@ -66,6 +76,7 @@ async function getSingleImage(req, res, next) {
       model: Caterogy,
       attributes: ["caterogyName"],
     },
+    raw: true, nest: true
   });
 
   if (!image) {
@@ -78,20 +89,23 @@ async function getSingleImage(req, res, next) {
     attributes: ["id", "username", "imageProfilePath"]
   })
 
+  const filteredImage = await filterImages(req, image)
+
   const imageDetails = {
     height: response.height,
     width: response.width,
-    uploadDate: image.createdAt,
-    location: image.location,
-    caterogy: image.Caterogy.caterogyName,
+    uploadDate: filteredImage.createdAt,
+    location: filteredImage.location,
+    caterogy: filteredImage.Caterogy.caterogyName,
   };
 
   const imageData = {
-    name: image.imageName,
-    price: image.price,
-    path: image.imagePath,
-    description: image.description,
-    noOfLikes: image.noOfLikes
+    name: filteredImage.imageName,
+    price: filteredImage.price,
+    path: filteredImage.imagePath,
+    description: filteredImage.description,
+    noOfLikes: filteredImage.noOfLikes,
+    isLiked: filteredImage.isLiked
   };
 
   const userData = {
@@ -106,7 +120,6 @@ async function getSingleImage(req, res, next) {
 async function getCaterogyImages(req, res) {
   const caterogyName = req.params.caterogy;
 
-  const page = +req.query.page || 1;
 
   // const caterogy = await Caterogy.findOne({
   //     where : {
@@ -133,18 +146,19 @@ async function getCaterogyImages(req, res) {
     res.status(404).json({ error: "No Caterogy By This Name Found" });
   }
 
-  const images = await Image.findAll({
+  let images = await Image.findAll({
     where: {
       CaterogyId: caterogy.id,
     },
     attributes: ["id", "imageName", "price", "imagePath"],
-    limit: 2,
-    offset: (page - 1) * 2,
+    raw: true
   });
 
   if (!images) {
     return res.status(404).json({ error: "No Images Found" });
   }
+
+  images = await filterImages(req, images)
 
   res.status(200).json({ data: images });
 }
@@ -152,18 +166,21 @@ async function getCaterogyImages(req, res) {
 async function getImagesByName(req, res) {
   const imageName = req.query.imageName;
 
-  const images = await Image.findAll({
+  let images = await Image.findAll({
     where: {
       imageName: {
         [Op.substring]: imageName,
       },
     },
     attributes: ["id", "imageName", "price", "imagePath"],
+    raw: true
   });
 
   if (!images) {
     return res.status(404).json({ message: "No Images Found" });
   }
+
+  images = await filterImages(req, images)
 
   res.status(200).json({ data: images });
 }
@@ -207,6 +224,11 @@ async function deleteUploadedImage(req, res, next) {
 }
 
 async function searchByImage(req, res, next) {
+
+  if (req.fileType) {
+    return res.status(400).json({ errorMessage: req.fileType })
+  }
+
   const base64Image = req.file.buffer.toString('base64');
 
   const url = 'http://127.0.0.1:8080/search_image';
@@ -229,16 +251,19 @@ async function searchByImage(req, res, next) {
         attributes: ["id"],
       });
 
-      const images = await Image.findAll({
+      let images = await Image.findAll({
         where: {
           CaterogyId: caterogy.id,
         },
-        attributes: ["id", "imageName", "price", "imagePath"]
+        attributes: ["id", "imageName", "price", "imagePath"],
+        raw: true
       });
 
       if (!images) {
         return res.status(404).json({ error: "No Images Found" });
       }
+
+      images = await filterImages(req, images)
 
       res.status(200).json({ data: images });
     })
