@@ -178,6 +178,10 @@ async function loadUserProfile(req, res) {
 
 async function editImageProfie(req, res) {
 
+  if (req.fileType) {
+    return res.status(400).json({ errorMessage: req.fileType })
+  }
+
   const userId = req.userId;
 
   const response = await imageKit.upload({
