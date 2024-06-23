@@ -1,6 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_TEST_SECRET_KEY)
 
-const Card = require('../models/card')
 const Order = require('../models/order')
 const Cart = require('../models/cart')
 const Image = require('../models/image')
@@ -43,42 +42,10 @@ async function makePaymentIntent(req, res) {
     //     publishableKey : process.env.STRIPE_TEST_PUBLISHABLE_KEY
     // })
 
-    const card = await getCardData(req, res)
-
-    res.status(201).json({ clientSecret: paymentIntent.client_secret, cardData: card })
+    res.status(201).json({ clientSecret: paymentIntent.client_secret })
 
 }
 
-async function saveCardData(req, res) {
-    const userId = req.userId
-
-    const { name, number, expiryDate, securityCode, postalCode } = req.body.card
-
-    const [card, created] = await Card.findOrCreate({
-        where: {
-            UserId: userId
-        },
-        defaults: {
-            name,
-            number,
-            expiryDate,
-            securityCode,
-            postalCode
-        }
-    })
-
-    if (!created) {
-        await card.update({
-            name,
-            number,
-            expiryDate,
-            securityCode,
-            postalCode
-        })
-    }
-
-    res.status(200).json({ message: "Card Data Saved Successfully" })
-}
 
 async function createOrder(req, res) {
 
@@ -112,28 +79,8 @@ async function createOrder(req, res) {
     await cart.destroy() // delete cart after making order
 }
 
-async function getCardData(req, res) {
-
-    const userId = req.userId
-
-    const card = await Card.findOne({
-        where: {
-            UserId: userId
-        },
-        attributes: {
-            exclude: ['id', 'UserId']
-        }
-    })
-
-    if (!card) {
-        return res.status(404).json({ message: "Card Data Not Found" })
-    }
-
-    return card
-}
 
 module.exports = {
     makePaymentIntent,
-    saveCardData,
     createOrder
 }
