@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 async function authenticate(res, expirationDate, userData) {
 
     const accessToken = jwt.sign({ userId: userData.userId },
-        process.env.ACCESS_TOKEN_SECRET_KEY, { expiresIn: expirationDate })
+        process.env.ACCESS_TOKEN_SECRET_KEY)
 
     // const refreshToken = jwt.sign({userId},
     //     process.env.REFRESH_TOKEN_SECRET_KEY, {expiresIn : expirationDate})
