@@ -20,7 +20,7 @@ async function addToCart(req, res) {
     if (!cart) {
         cart = await Cart.create({
             UserId: userId,
-            totalPrice: imagePrice
+            totalPrice: +imagePrice
         })
     }
 
@@ -30,7 +30,7 @@ async function addToCart(req, res) {
             return res.status(403).json({ error: "Image Already Exits In The Cart" })
         }
 
-        const totalPrice = cart.totalPrice + imagePrice
+        const totalPrice = cart.totalPrice + +imagePrice
         await cart.update({
             totalPrice
         })
