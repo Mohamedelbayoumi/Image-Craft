@@ -22,8 +22,6 @@ async function getImages(req, res, next) {
     offset: (page - 1) * 6
   });
 
-  console.log(images);
-
   if (!images) {
     return next(new ApiError("No Images Found", 404))
   }
