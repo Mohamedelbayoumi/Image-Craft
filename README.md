@@ -75,51 +75,51 @@ Here is the base url => <https://image-craft-cvnj.onrender.com>
 For detailed API documentation, please import the Image Craft API.postman_collection.json or
 visit <https://documenter.getpostman.com/view/33954963/2sA3Bt3pkX>
 
-**Authentication**
+- ### Authentication
 
-- *POST /api/v1/signup* - Register a new user
-- *POST /api/v1//login/:device* - Login a user and return tokens
-- *POST /api/v1/logout* - sign the user out
-- *POST /api/v1/passwordReset* - enable user tot reset password
-- *POST /api/v1/otp-verification* - check the validation of the otp
-- *PATCH /api/v1/new-password* - updates the user password
-- *GET /api/v1/newToken* - create a new access token
-- *GET /api/v1/google-authentication* - enable google registeration
+  - **POST /api/v1/signup** - Register a new user
+  - **POST /api/v1//login/:device** - Login a user and return tokens
+  - **POST /api/v1/logout** - sign the user out
+  - **POST /api/v1/passwordReset** - enable user tot reset password
+  - **POST /api/v1/otp-verification** - check the validation of the otp
+  - **PATCH /api/v1/new-password** - updates the user password
+  - **GET /api/v1/newToken** - create a new access token
+  - **GET /api/v1/google-authentication** - enable google registeration
 
-**Images**
+- ### Images
 
-- *GET /api/v1/images* - returns images using pagination
-- *GET /api/v1/images/search* - returns images with a specific name
-- *GET /api/v1/images/search/price* - returns images in the order of price
-- *GET /api/v1/image* - returns details about a single image
-- *GET /api/v1/images/caterogy/:caterogy* - returns images of a caterogy
-- *GET /api/v1/image-downloading/:imageId* - download an image
-- *POST /api/v1/images* - upload an image
-- *POST /api/v1/searching-by-image* - returns the images that look like the searched image
-- *DELETE /api/v1/image* - delete an image
+  - **GET /api/v1/images** - returns images using pagination
+  - **GET /api/v1/images/search** - returns images with a specific name
+  - **GET /api/v1/images/search/price** - returns images in the order of price
+  - **GET /api/v1/image** - returns details about a single image
+  - **GET /api/v1/images/caterogy/:caterogy** - returns images of a caterogy
+  - **GET /api/v1/image-downloading/:imageId** - download an image
+  - **POST /api/v1/images** - upload an image
+  - **POST /api/v1/searching-by-image** - returns the images that look like the searched image
+  - **DELETE /api/v1/image** - delete an image
 
-**Cart**
+- ### Cart
 
-- *GET /api/v1/cart* - returns cart content
-- *POST /api/v1/cart* - add an image to the cart
-- *GET /api/v1/cart/:imageId* - delete an image from the cart
-- *DELETE /api/v1/cart* - delete the cart
+  - **GET /api/v1/cart** - returns cart content
+  - **POST /api/v1/cart** - add an image to the cart
+  - **GET /api/v1/cart/:imageId** - delete an image from the cart
+  - **DELETE /api/v1/cart** - delete the cart
 
-**Checkout**
+- ### Checkout
 
-- *POST /api/v1/payment-intent* - returns payment intent created by stripe
-- *POST /api/v1/order* - create an order
+  - **POST /api/v1/payment-intent** - returns payment intent created by stripe
+  - **POST /api/v1/order** - create an order
 
-**User**
+- ### User
 
-- *GET /api/v1/profile/liked-images* - returns liked images for user
-- *GET /api/v1/profile/uploaded-images* - returns uploaded images for user
-- *GET /api/v1/profile/ordered-images* - returns ordered images for user
-- *GET /api/v1/profile* - returns profile user data
-- *POST /api/v1/images/like/:imageId* - enable user to like an image
-- *POST /api/v1/images/unlike/:imageId* - enable user to unlike an image
-- *PATCH /api/v1/profile/image* - update the user profile image
-- *DELETE /api/v1/user* - deletes the user's account
+  - **GET /api/v1/profile/liked-images** - returns liked images for user
+  - **GET /api/v1/profile/uploaded-images** - returns uploaded images for user
+  - **GET /api/v1/profile/ordered-images** - returns ordered images for user
+  - **GET /api/v1/profile** - returns profile user data
+  - **POST /api/v1/images/like/:imageId** - enable user to like an image
+  - **POST /api/v1/images/unlike/:imageId** - enable user to unlike an image
+  - **PATCH /api/v1/profile/image** - update the user profile image
+  - **DELETE /api/v1/user** - deletes the user's account
 
 ## Database Design
 
