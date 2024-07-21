@@ -6,9 +6,6 @@ const Caterogy = require('../models/caterogy')
 const Order = require('../models/order')
 const orderImage = require('../models/order.images')
 const likedImages = require('../models/liked.images')
-const Otp = require('../models/otp')
-const Card = require('../models/card')
-// const paymentIntent = require('../models/paymentIntent')
 
 
 function setRelationships() {
@@ -19,10 +16,10 @@ function setRelationships() {
     User.hasMany(Image, { onDelete: 'CASCADE' })
     Image.belongsTo(User)
 
-    Caterogy.hasMany(Image)
-    Image.belongsTo(Caterogy)
+    Caterogy.hasMany(Image, { foreignKey: 'CaterogyId' })
+    Image.belongsTo(Caterogy, { foreignKey: 'CaterogyId' })
 
-    User.hasOne(Cart, { onDelete: 'CASCADE' }) // userId in cart table
+    User.hasOne(Cart, { onDelete: 'CASCADE' })
     Cart.belongsTo(User)
 
     User.hasMany(Order, { onDelete: 'CASCADE' })
@@ -34,14 +31,6 @@ function setRelationships() {
     User.belongsToMany(Image, { through: likedImages, onDelete: 'CASCADE' })
     Image.belongsToMany(User, { through: likedImages })
 
-    User.hasOne(Otp, { onDelete: 'CASCADE' })
-    Otp.belongsTo(User)
-
-    User.hasOne(Card, { onDelete: 'CASCADE' })
-    Card.belongsTo(User)
-
-    // User.hasOne(paymentIntent, { onDelete: 'CASCADE'})
-    // paymentIntent.belongsTo(User)
 }
 
 

@@ -1,8 +1,8 @@
 const sequelize = require('../config/dbConnection')
 
-const orderImage = sequelize.define('orderImage',{},{
-    timestamps : false,
-    freezeTableName : false
+const orderImage = sequelize.define('orderImage', {}, {
+    timestamps: false,
+    freezeTableName: false
 })
 
 

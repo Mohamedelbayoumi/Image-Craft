@@ -3,15 +3,13 @@ const User = require("../models/user");
 const Image = require("../models/image");
 const Order = require("../models/order");
 
-const imageKit = require("../util/image-kit")
+const imageKit = require("../config/image-kit")
 
-async function likeImage(req, res) {
+const ApiError = require('../util/customError')
+
+async function likeImage(req, res, next) {
 
   const userId = req.userId;
-  if (!userId) {
-    return res.status(401).json({ error: "User IS Not Authenticated" });
-  }
-
   const imageId = req.params.imageId;
 
   const image = await Image.findByPk(imageId, {
@@ -19,7 +17,7 @@ async function likeImage(req, res) {
   })
 
   if (!image) {
-    return res.status(404).json({ message: "No Image Found" });
+    return next(new ApiError("No Image Found", 404))
   }
 
   await image.update({
@@ -31,12 +29,9 @@ async function likeImage(req, res) {
   res.status(200).json({ message: "User liked The Image Successfully" });
 }
 
-async function unlikeImage(req, res) {
-  const userId = req.userId;
-  if (!userId) {
-    return res.status(401).json({ error: "User IS Not Authenticated" });
-  }
+async function unlikeImage(req, res, next) {
 
+  const userId = req.userId;
   const imageId = req.params.imageId;
 
   const image = await Image.findByPk(imageId, {
@@ -44,7 +39,7 @@ async function unlikeImage(req, res) {
   })
 
   if (!image) {
-    return res.status(404).json({ message: "No Image found" });
+    return next(new ApiError("No Image Found", 404))
   }
 
   await image.update({
@@ -56,7 +51,7 @@ async function unlikeImage(req, res) {
   res.status(200).json({ message: "User Unliked The Image" });
 }
 
-async function getLikedImages(req, res) {
+async function getLikedImages(req, res, next) {
   const userId = req.userId;
 
   const user = await User.findByPk(userId, {
@@ -72,13 +67,14 @@ async function getLikedImages(req, res) {
   });
 
   if (!user) {
-    return res.status(404).json({ error: "No Liked Images Found" });
+    return next(new ApiError("No Liked Images Found", 404))
   }
 
-  res.status(200).json(user.Images);
+  res.status(200).json({ data: user.Images });
+
 }
 
-async function getUploadedImages(req, res) {
+async function getUploadedImages(req, res, next) {
   const userId = req.userId;
 
   const images = await Image.findAll({
@@ -88,10 +84,14 @@ async function getUploadedImages(req, res) {
     attributes: ["id", "imagePath"],
   });
 
-  res.status(200).json(images);
+  if (!images) {
+    return next(new ApiError("No Uploaded Images Found", 404))
+  }
+
+  res.status(200).json({ data: images });
 }
 
-async function getOrderedImages(req, res) {
+async function getOrderedImages(req, res, next) {
   const userId = req.userId;
 
   const order = await Order.findOne({
@@ -110,10 +110,11 @@ async function getOrderedImages(req, res) {
   });
 
   if (!order) {
-    return res.status(404).json({ error: "No Order found" });
+    return next(new ApiError("No Order found", 404))
   }
 
-  res.status(200).json(order.Images);
+  res.status(200).json({ data: order.Images });
+
 }
 
 async function deleteUser(req, res, next) {
@@ -148,20 +149,19 @@ async function deleteUser(req, res, next) {
   res.status(200).json({ message: "User Deleted Successfully" });
 }
 
-async function loadUserProfile(req, res) {
-  const userId = req.query.userId || req.userId;
+async function loadUserProfile(req, res, next) {
+
+  const userId = req.userId;
 
   const user = await User.findByPk(userId, {
     attributes: [
       "username",
-      "followingNum",
-      "followersNum",
-      "imageProfilePath",
+      "imageProfilePath"
     ],
   });
 
   if (!user) {
-    return res.status(404).json({ error: "No User Found" });
+    return next(new ApiError("No User Found", 404))
   }
 
   const images = await Image.findAll({
@@ -175,6 +175,11 @@ async function loadUserProfile(req, res) {
 }
 
 async function editImageProfie(req, res) {
+
+  if (req.fileType) {
+    // 415 -> Unsupported Media Type
+    return next(new ApiError("(PNG OR JPG OR JPEG) Images Only!", 415))
+  }
 
   const userId = req.userId;
 
@@ -198,8 +203,6 @@ async function editImageProfie(req, res) {
 
   res.status(200).json({ Messge: "Image Changed Successfully" });
 }
-
-
 
 module.exports = {
   likeImage,

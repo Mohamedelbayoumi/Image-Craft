@@ -10,7 +10,7 @@ const User = sequelize.define('User', {
         unique: true
     },
     email: {
-        type: DataTypes.STRING(30), // عدلها و شيل ال 30
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true
     },
@@ -23,16 +23,8 @@ const User = sequelize.define('User', {
         allowNull: false,
         unique: true
     },
-    followersNum: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        defaultValue: 0
-    },
-    followingNum: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        defaultValue: 0,
-    },
     googleId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     imageProfilePath: {

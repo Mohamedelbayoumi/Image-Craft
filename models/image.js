@@ -28,13 +28,17 @@ const Image = sequelize.define('Image', {
         type: DataTypes.INTEGER.UNSIGNED,
         defaultValue: 0
     },
+    noOfViews: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        defaultValue: 0
+    },
     imageKitId: {
         type: DataTypes.STRING,
         allowNull: false
     }
 }, {
     createdAt: true,
-    updatedAt: false,
+    updatedAt: false
 })
 
 

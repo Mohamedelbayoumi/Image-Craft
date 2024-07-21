@@ -1,8 +1,8 @@
 const sequelize = require('../config/dbConnection')
 
-const cartImages = sequelize.define('cartImages',{},{
-    timestamps : false,
-    freezeTableName : false
+const cartImages = sequelize.define('cartImages', {}, {
+    timestamps: false,
+    freezeTableName: false
 })
 
 

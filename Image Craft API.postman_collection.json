@@ -1,0 +1,4251 @@
+{
+	"info": {
+		"_postman_id": "14804749-ab43-4ff0-86ca-115980fff9e8",
+		"name": "Image Craft API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33954963"
+	},
+	"item": [
+		{
+			"name": "Authtencation Endpoints",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"ahmedmohsen@yahoo.com\",\r\n    \"userName\" : \"Ahmed_Mohsen\",\r\n    \"phoneNumber\" : \"01022173510\",\r\n    \"password\" : \"mentafi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/v1/signup",
+						"description": "create a user in the database and saves its data\n\nnote : username has to be a unique value"
+					},
+					"response": [
+						{
+							"name": "register with existed email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userName",
+											"value": "riri",
+											"type": "text"
+										},
+										{
+											"key": "phoneNumber",
+											"value": "3456666668",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "cimobiv@abl.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "mentafi_",
+											"type": "text"
+										}
+									]
+								},
+								"url": "http://localhost:5000/api/v1/signup"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-0vInFX57D0463enA/zkOEgxNZXU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 01:17:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Email already exists\"\n}"
+						},
+						{
+							"name": "register user successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"totso@toto.com\",\r\n    \"userName\" : \"riri\",\r\n    \"phoneNumber\" : \"3456666668\",\r\n    \"password\" : \"mentafi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/api/v1/signup"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-4wuOnm3SDOVtWXfdo5HkKUMFJSI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 01:18:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Registered Successfully\"\n}"
+						},
+						{
+							"name": "username is already used",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"totszzzzzzzzzzzo@toto.com\",\r\n    \"userName\" : \"bibo\",\r\n    \"phoneNumber\" : \"3456668\",\r\n    \"password\" : \"mentafi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://image-craft-cvnj.onrender.com/api/v1/signup"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 12 Jun 2024 00:19:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8925aad9d98a5366-CAI"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-qa8WoYso9zt3MfW1ZpMMPvl3+84\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "rndr-id",
+									"value": "451e0dd3-40fe-41db"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The name is already used\"\n}"
+						},
+						{
+							"name": "phone number is already existed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"totszzzzzzzzzzzo@toto.com\",\r\n    \"userName\" : \"bibxxxo\",\r\n    \"phoneNumber\" : \"3456668\",\r\n    \"password\" : \"mentafi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://image-craft-cvnj.onrender.com/api/v1/signup"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 12 Jun 2024 00:19:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8925ac23ca725366-CAI"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-iSqzc/QTNIPtRukWq7x3JQuEX4Q\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "rndr-id",
+									"value": "9c97e19b-0087-4e5c"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The phone number is already existed\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"ahmedmohsen@yahoo.com\",\r\n    \"password\" : \"mentafi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/login/:device",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login",
+								":device"
+							],
+							"variable": [
+								{
+									"key": "device",
+									"value": "web"
+								}
+							]
+						},
+						"description": "- Handle the login process, and if it succeeds, respond with a message  \n    indicating successful login and include two tokens: a refresh token sent  \n    in a cookie and an access token in the response data.\n    \n- The access token should be included in the response data, while the refresh token should  \n    be sent in a cookie.\n    \n- Ensure to include the user's device type in the URL parameters. If the user is accessing the website, set the device parameter to \"web\", causing the refresh token to expire after 2 days. otherwise then user uses the mobile application and the refresh token will not expire."
+					},
+					"response": [
+						{
+							"name": "login failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "toto@toto.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "mentafi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/login/:device",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"login",
+										":device"
+									],
+									"variable": [
+										{
+											"key": "device",
+											"value": "web"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-VMmyVbWADF17moNBn9IA3/yZkmA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 11:17:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Invalid Email or Password\"\n}"
+						},
+						{
+							"name": "login succeeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"toto@toto.com\",\r\n    \"password\" : \"mentafi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://image-craft-cvnj.onrender.com/api/v1/login/:device",
+									"protocol": "https",
+									"host": [
+										"image-craft-cvnj",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login",
+										":device"
+									],
+									"variable": [
+										{
+											"key": "device",
+											"value": "web"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 20:46:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "240"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "890bbb036f94536a-CAI"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-si5hJ1C1VyYzXjY8O3nYSchTAds\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "rndr-id",
+									"value": "f1b2788d-a33c-4dfd"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTcxNzg3OTU4MCwiZXhwIjoxNzE4MDUyMzgwfQ.Y6hcoj3aRlbS--6ssX22f5IKijFjAebVGfV6_1Pmi10\",\n    \"userData\": {\n        \"userId\": 5,\n        \"userName\": \"riri\",\n        \"email\": \"toto@toto.com\",\n        \"phoneNumber\": \"3456666668\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "toto@toto.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/api/v1/passwordReset",
+						"description": "create an otp (one time password) and sends email contains this otp to the user's email and save the otp in the database with 30 minutes expiration date and number of tries with zero value\n\nnote : you will get the user id because you will send it in verify otp request"
+					},
+					"response": [
+						{
+							"name": "resetting succeeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"cimobiv103@abnovel.com\"\r\n}"
+								},
+								"url": "http://localhost:5000/api/v1/passwordReset"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-M/xiX4vbgPeYWFVnAoWtbZWmLrc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 17:48:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Email Sent Successfully\",\n    \"userId\": 1\n}"
+						},
+						{
+							"name": "resetting failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "c@abnovel.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": "http://localhost:5000/api/v1/passwordReset"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-2JdoHsw8Ys7KN4vit7Gc+mguXiY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 17:51:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"User Not Found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "verify otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "otp",
+									"value": "379560",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/otp-verification/?userId=4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"otp-verification",
+								""
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "4"
+								}
+							]
+						},
+						"description": "- check that otp is correct and valid\n- the user can try to send otp 3 times if he excceeded 3 times the otp will be invalid and get deleted from database\n- the otp has 30 minutes expiration time and if user sends otp after that time, otp will be invalid and deleted from database\n    \n- the response contains user id because you will send it with create new password request"
+					},
+					"response": [
+						{
+							"name": "otp is incorrect",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "otp",
+											"value": "463622",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/otp-verification/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"otp-verification",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-wpPXnnUSXNWi/wrpMqSJTS8RrDo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 18:20:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Otp is invalid\"\n}"
+						},
+						{
+							"name": "otp becomes invalid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "otp",
+											"value": "463622",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/otp-verification/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"otp-verification",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-cVcfY0lT7cUOsK0Mf+p1OiH195o\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 18:31:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Code is invalid, please try again to reset password\"\n}"
+						},
+						{
+							"name": "no otp for this user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "otp",
+											"value": "463622",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/otp-verification/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"otp-verification",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-uG/WrBAoj5MPO2DL7zhnkzxQL6w\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 18:39:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"No Otp Found For That User\"\n}"
+						},
+						{
+							"name": "verification succeeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"otp\" : 712413\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/otp-verification/?userId=9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"otp-verification",
+										""
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-DXRE1ghLQh7oAy8I9neTcxGK3BA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 20:27:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Otp is valid\",\n    \"userId\": \"9\"\n}"
+						}
+					]
+				},
+				{
+					"name": "create new password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "mentafi",
+									"type": "text"
+								},
+								{
+									"key": "confirmPassword",
+									"value": "mentafi",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/new-password?userId=4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"new-password"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "4"
+								}
+							]
+						},
+						"description": "- set validation on password and confirm password\n    \n- updates user password"
+					},
+					"response": [
+						{
+							"name": "password updated",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\" : \"mentafi\",\r\n    \"confirmPassword\" : \"mentafi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/new-password?userId=9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"new-password"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-WfOmqnAdrvhUPT9PdUpZPaidqZ0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 00:16:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Password Updated. Redirect User To login\"\n}"
+						}
+					]
+				},
+				{
+					"name": "generate access token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/v1/newToken",
+						"description": "- Generation access token and that's because the expiration date of access token is 15 minute and to prevent user to login again\n    \n- Refresh Token should be sent in cookie and if the user uses the website the refresh token will expire after 2 days and if user uses the mobile application the refresh token will not expire"
+					},
+					"response": [
+						{
+							"name": "generation succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/newToken"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c1-ZWAHRhhz3wFegyXoyP110LGah9Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 11:59:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New Token Generated\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTcxNDA0NjM2MCwiZXhwIjoxNzE0MDQ3MjYwfQ.s7dIsFKnlrJnxZFKaN3UPHIHaYmYok3Kh3_oAMMaoP0\"\n}"
+						}
+					]
+				},
+				{
+					"name": "logout user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url}}/api/v1/logout"
+					},
+					"response": [
+						{
+							"name": "logout succeeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "{{url}}/api/v1/logout"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "180"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "179"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jul 2024 00:38:36 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1721435977"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=; Path=/api/v1/newToken; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; SameSite=Strict"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-yELVXuwAMYBOkKqaaV0eXq+Io7k\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=120"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Refresh Token Deleted Successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Images Endpoints",
+			"item": [
+				{
+					"name": "fetch images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/v1/images",
+						"description": "Get all images for every page and the rate of fetching is 2 images per page"
+					},
+					"response": [
+						{
+							"name": "fetching succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images?page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "189"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bd-DfjZ3KawUOdms01tOG80aUPCgw8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 Apr 2024 19:43:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"imageName\": \"text and talk\",\n        \"price\": 300,\n        \"imagePath\": \"images\\\\text-and-talk-1713975350349.jpg\"\n    },\n    {\n        \"id\": 4,\n        \"imageName\": \"text\",\n        \"price\": 150,\n        \"imagePath\": \"images\\\\text-1713975379185.jpg\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "fetch single image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/image/?imageId=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"image",
+								""
+							],
+							"query": [
+								{
+									"key": "imageId",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Get a single image by passing the image id in the url query parameters"
+					},
+					"response": [
+						{
+							"name": "fetching succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://image-craft-cvnj.onrender.com/api/v1/image/?imageId=1",
+									"protocol": "https",
+									"host": [
+										"image-craft-cvnj",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"image",
+										""
+									],
+									"query": [
+										{
+											"key": "imageId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "400"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"190-m60jMqb0dXSddafuCPLqdZpBq08\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 20:03:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=120"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"imageDetails\": {\n        \"height\": 3264,\n        \"width\": 4928,\n        \"uploadDate\": \"2024-05-06T20:01:36.000Z\",\n        \"location\": \"alex\",\n        \"caterogy\": \"vehicles\"\n    },\n    \"imageData\": {\n        \"name\": \"car\",\n        \"price\": 1000,\n        \"path\": \"https://ik.imagekit.io/pdrdxybo1/tr:n-ik_ml_thumbnail/images/car_JaiFuSI3F\",\n        \"description\": \"we are testing \",\n        \"noOfLikes\": 0\n    },\n    \"userData\": {\n        \"username\": \"riri\",\n        \"profileImage\": \"profile-images/IMG-20240306-WA0084.jpg-1714927588558.jpg\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch caterogy images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/images/caterogy/:caterogy",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"caterogy",
+								":caterogy"
+							],
+							"variable": [
+								{
+									"key": "caterogy",
+									"value": "glacier"
+								}
+							]
+						},
+						"description": "Get all images for the chosen caterogy"
+					},
+					"response": [
+						{
+							"name": "fetching succedded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://image-craft-cvnj.onrender.com/api/v1/images/caterogy/:caterogy",
+									"protocol": "https",
+									"host": [
+										"image-craft-cvnj",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"caterogy",
+										":caterogy"
+									],
+									"variable": [
+										{
+											"key": "caterogy",
+											"value": "glacier"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 21:07:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "180"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "89350c4d6b7b536c-CAI"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10d-rb6rSMVFKRI+yJ94Yz7KSRkswlE\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "rndr-id",
+									"value": "3e7d1dcd-a59b-4882"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 6,\n            \"imageName\": \"car\",\n            \"price\": 1000,\n            \"imagePath\": \"https://ik.imagekit.io/pdrdxybo1/tr:n-ik_ml_thumbnail/images/car_ozcmVKYGR\"\n        },\n        {\n            \"id\": 7,\n            \"imageName\": \"snow\",\n            \"price\": 547,\n            \"imagePath\": \"https://ik.imagekit.io/pdrdxybo1/tr:n-ik_ml_thumbnail/images/snow_3j06F6Etu\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch images by search name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/images/search?imageName=ar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"search"
+							],
+							"query": [
+								{
+									"key": "imageName",
+									"value": "ar"
+								}
+							]
+						},
+						"description": "Retrieve all images whose names contain the search term entered by the user"
+					},
+					"response": [
+						{
+							"name": "fetching succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images/search?imageName=TA",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"search"
+									],
+									"query": [
+										{
+											"key": "imageName",
+											"value": "TA"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-N0AlSPceTFgqr1m+a7L29UXtpuc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 00:57:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"imageName\": \"text and talk\",\n        \"price\": 300,\n        \"imagePath\": \"images\\\\text-and-talk-1713975350349.jpg\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "upload images",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTcxODE5OTA4NiwiZXhwIjoxNzE4MzcxODg2fQ.09ZJUHG0E4-JvAQlPmlcdmJ0g_sdKqWLt3mBWxDImV8"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageName",
+									"value": "snow",
+									"type": "text"
+								},
+								{
+									"key": "caterogy",
+									"value": "glacier",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "547",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "testttttt",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "russia",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/F:/AI Model/seg_train/glacier/13.jpg"
+								}
+							]
+						},
+						"url": "{{url}}/api/v1/images",
+						"description": "saves the image data to the related user into the database"
+					},
+					"response": [
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "imageName",
+											"value": "parrot",
+											"type": "text"
+										},
+										{
+											"key": "caterogy",
+											"value": "birds",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "we are testing ",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "cairo",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/WARE/Desktop/test.jpg"
+										}
+									]
+								},
+								"url": "http://localhost:5000/api/v1/images"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 12:26:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						},
+						{
+							"name": "upload succeeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "imageName",
+											"value": "car",
+											"type": "text"
+										},
+										{
+											"key": "caterogy",
+											"value": "vehicles",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "we are testing ",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "alex",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/WARE/Desktop/image4.jpg"
+										}
+									]
+								},
+								"url": "http://localhost:5000/api/v1/images"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-K7INVnAMOhw1rMYBefCbkLwPSnI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Apr 2024 12:32:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Image Uploaded Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch images by price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/images/search/price?order=desc&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"search",
+								"price"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "desc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "- get all images ordered by their price\n    \n- the images are divided into pages and you have to specify the page number in query parameters\n    \n- if order in query parameters equals to asc, then the cheapest images will be fetched\n    \n- and if the order in query parameters equals to desc, then the most expensive images will be fetched"
+					},
+					"response": [
+						{
+							"name": "cheapest images in the first page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images/search/price?order=asc&page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"search",
+										"price"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "asc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "189"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bd-JSkRhfZlDfueMHERnAIuG/ToYuY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 Apr 2024 10:04:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"imageName\": \"text\",\n        \"price\": 150,\n        \"imagePath\": \"images\\\\text-1713975379185.jpg\"\n    },\n    {\n        \"id\": 3,\n        \"imageName\": \"text and talk\",\n        \"price\": 300,\n        \"imagePath\": \"images\\\\text-and-talk-1713975350349.jpg\"\n    }\n]"
+						},
+						{
+							"name": "most expensive images in the first page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images/search/price?order=desc&page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"search",
+										"price"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "183"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b7-y/VOPzF5/ugEaIqvxeujsM4vQFk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 Apr 2024 10:05:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 6,\n        \"imageName\": \"motorcycle\",\n        \"price\": 5000,\n        \"imagePath\": \"images\\\\motorcycle-1714150959173.PNG\"\n    },\n    {\n        \"id\": 5,\n        \"imageName\": \"car\",\n        \"price\": 1000,\n        \"imagePath\": \"images\\\\car-1714048322814.jpg\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "delete an uploaded image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcxNTAzNTU2NCwiZXhwIjoxNzE1MjA4MzY0fQ.U9hCfSMpSwXCRTTJqp-ks14IyKeISDW6Ruu2UV684n8"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/image?imageId=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"image"
+							],
+							"query": [
+								{
+									"key": "imageId",
+									"value": "2"
+								}
+							]
+						},
+						"description": "delete an uploaded image by sending its id in the url query parameters"
+					},
+					"response": [
+						{
+							"name": "deleted successfully",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/image?imageId=12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"image"
+									],
+									"query": [
+										{
+											"key": "imageId",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-WzMYCO5CAFyMOMa3NCPRjwwYdNk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 Apr 2024 20:00:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Messge\": \"Image Deleted Successfully\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/image?imageId=12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"image"
+									],
+									"query": [
+										{
+											"key": "imageId",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 Apr 2024 20:07:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "search by image",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/WARE/Downloads/Thwaites-Glacier-scaled.jpg"
+								}
+							]
+						},
+						"url": "{{url}}/api/v1/searching-by-image"
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/WARE/Downloads/Thwaites-Glacier-scaled.jpg"
+										}
+									]
+								},
+								"url": "https://f466-62-114-171-149.ngrok-free.app/api/v1/searching-by-image"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 20 Jun 2024 23:01:54 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"b3-LcWVS+d6nRfu3Iykxc9aGSR5Bxw\""
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 13,\n            \"imageName\": \"Thwaites-Glacier-scaled\",\n            \"price\": 547,\n            \"imagePath\": \"https://ik.imagekit.io/pdrdxybo1/tr:n-ik_ml_thumbnail/images/Thwaites-Glacier-scaled_JWeWe4EpA\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "download the image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMTQyMjcwN30.5WmTLRG5j66RzdwIjslJbdWxKUY0eOFZdbIblEhOP-8"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1//image-downloading/:imageId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"",
+								"image-downloading",
+								":imageId"
+							],
+							"variable": [
+								{
+									"key": "imageId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Endpoints",
+			"item": [
+				{
+					"name": "fetch liked images",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/v1/profile/liked-images",
+						"description": "get all images that the user liked"
+					},
+					"response": [
+						{
+							"name": "fetching succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/profile/liked-images"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-ayuKRE8BeHV94BktzTRgvEdrhbs\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 16:52:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"imagePath\": \"images\\\\text-1713975379185.jpg\"\n    }\n]"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/profile/liked-images"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "118"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"76-yH7M/TsqT5+xNwZdtaitIurF55Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 17:04:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"imagePath\": \"images\\\\text-and-talk-1713975350349.jpg\"\n    },\n    {\n        \"id\": 4,\n        \"imagePath\": \"images\\\\text-1713975379185.jpg\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "fetch uploaded images",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/v1/profile/uploaded-images",
+						"description": "get all images that the user uploaded"
+					},
+					"response": [
+						{
+							"name": "fetching succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/profile/uploaded-images"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-5wlDW7Ns+8l/Nyzuc040XNyrRwY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 17:07:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 7,\n        \"imagePath\": \"images\\\\toto-3la-kaboto-1714151124829.PNG\"\n    }\n]"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/profile/uploaded-images"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 20:10:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch ordered images",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/v1/profile/ordered-images",
+						"description": "get the images that the user has bought"
+					},
+					"response": [
+						{
+							"name": "fetch succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/profile/ordered-images"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-HgOgcMa5QUKgMC0cPMuwuuT0+pY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 20:01:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"imagePath\": \"images\\\\text-1713975379185.jpg\"\n    },\n    {\n        \"id\": 5,\n        \"imagePath\": \"images\\\\car-1714048322814.jpg\"\n    }\n]"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/profile/ordered-images"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 19:58:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "load user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTcxNTAzNzM5OCwiZXhwIjoxNzE1MjEwMTk4fQ.5JPdjaGXfjOB1G8WxBKQJd7dYc7MkDkdB43wsNFPbOY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/v1/profile",
+						"description": "get user profile data like username, following number, followers number and image profile path in addition to the uploaded images by user"
+					},
+					"response": [
+						{
+							"name": "loading succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://image-craft-cvnj.onrender.com/api/v1/profile"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 23:04:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "87fc9bf7884c5368-CAI"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"124-jSym1pdlRvDvjJXfKK4jCHxWcHk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Content-Type, Authorization, Cookie"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "rndr-id",
+									"value": "4e13b17e-9be8-42bf"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userInfo\": {\n        \"username\": \"riri\",\n        \"followingNum\": 0,\n        \"followersNum\": 0,\n        \"imageProfilePath\": \"https://ik.imagekit.io/pdrdxybo1/tr:n-ik_ml_thumbnail/profile-images/c__3_PvjA1VYiN.jpg\"\n    },\n    \"uploadedImages\": [\n        {\n            \"id\": 2,\n            \"imagePath\": \"https://ik.imagekit.io/pdrdxybo1/tr:n-ik_ml_thumbnail/images/car_4Z3hLJ7G5\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/profile"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:01:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "like image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/images/like/:imageId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"like",
+								":imageId"
+							],
+							"variable": [
+								{
+									"key": "imageId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "The user who is authenticated can like an image and updates number of likes for this image"
+					},
+					"response": [
+						{
+							"name": "like is succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images/like/:imageId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"like",
+										":imageId"
+									],
+									"variable": [
+										{
+											"key": "imageId",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-4Qm4QmZZKgLiChfhi3d49Ce8x30\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 15:10:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User liked The Image Successfully\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images/like/:imageId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"like",
+										":imageId"
+									],
+									"variable": [
+										{
+											"key": "imageId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:33:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "edit image profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTcxNTAzNzM5OCwiZXhwIjoxNzE1MjEwMTk4fQ.5JPdjaGXfjOB1G8WxBKQJd7dYc7MkDkdB43wsNFPbOY"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"description": "lazem t8ayer el image fy kol mara fta7t el tab",
+									"type": "file",
+									"src": "/F:/Final_Project/images/c__3.jpg"
+								}
+							]
+						},
+						"url": "{{url}}/api/v1/profile/image",
+						"description": "updates the user profile image"
+					},
+					"response": [
+						{
+							"name": "editing succeeded",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"description": "lazem t8ayer el image fy kol mara fta7t el tab",
+											"type": "file",
+											"src": "/C:/Users/WARE/Desktop/image4.jpg"
+										}
+									]
+								},
+								"url": "http://localhost:5000/api/v1/profile/image"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-Zzm38XM2sVLwoEI5P3JXPTxz57Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 17:52:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Messge\": \"Image Changed Successfully\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"description": "lazem t8ayer el image fy kol mara fta7t el tab",
+											"type": "file",
+											"src": "/C:/Users/WARE/Desktop/image4.jpg"
+										}
+									]
+								},
+								"url": "http://localhost:5000/api/v1/profile/image"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:02:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "unlike image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/images/unlike/:imageId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"unlike",
+								":imageId"
+							],
+							"variable": [
+								{
+									"key": "imageId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "The user who is authenticated can unlike an image and updates number of likes for this image"
+					},
+					"response": [
+						{
+							"name": "unlike is succeeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images/unlike/:imageId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"unlike",
+										":imageId"
+									],
+									"variable": [
+										{
+											"key": "imageId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-PJnRqx7Y7Xyaz3z5y7vB8urX0Is\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 16:35:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User Unliked The Image\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/images/unlike/:imageId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"unlike",
+										":imageId"
+									],
+									"variable": [
+										{
+											"key": "imageId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 16:13:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTcxNTAzODI3OCwiZXhwIjoxNzE1MjExMDc4fQ.UR2YyJqXdKsPMKGJtbuLxU4Wq2otexoB5nh6mB5BsSY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url}}/api/v1/user",
+						"description": "delete the user from database and delete all the data that is related to this user"
+					},
+					"response": [
+						{
+							"name": "deletion succeeded",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/user"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-cRu+tbC3A7if8PxvXdGk7Yz6AAw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 20:06:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User Deleted Successfully\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/user"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 19:59:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cart Endpoints",
+			"item": [
+				{
+					"name": "fetch cart images",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/v1/cart",
+						"description": "get all images that was added to the cart in addition to the total price of these images"
+					},
+					"response": [
+						{
+							"name": "no cart found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-ztA9/IPWXcRDqZ/pfDXr7WK+YsU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 17:56:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No Cart Found\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:01:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						},
+						{
+							"name": "fetching succeeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "217"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d9-1o7cLD0tNCNp02O0J63yYVOHY80\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:22:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"totalPrice\": 450,\n    \"images\": [\n        {\n            \"id\": 3,\n            \"price\": 300,\n            \"imageName\": \"text and talk\",\n            \"imagePath\": \"images\\\\text-and-talk-1713975350349.jpg\"\n        },\n        {\n            \"id\": 4,\n            \"price\": 150,\n            \"imageName\": \"text\",\n            \"imagePath\": \"images\\\\text-1713975379185.jpg\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add To Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imageId\" : 1,\r\n    \"imagePrice\" : 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/v1/cart",
+						"description": "create a user's cart if not created and add the image to the cart and update the total price for the cart\n\nnote : if the user tries to add an existed image to the cart, the response will be a message says that image already is existing in the cart"
+					},
+					"response": [
+						{
+							"name": "image already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"imageId\" : 3,\r\n    \"imagePrice\" : 300\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-xEW8LYzd/qQBUT+q943SvQE/q9Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:10:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Image Already Exits In The Cart\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"imageId\" : 1,\r\n    \"imagePrice\" : 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:03:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						},
+						{
+							"name": "adding succeeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"imageId\" : 3,\r\n    \"imagePrice\" : 300\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-0+c0npNR2MVsz39IbDF3jZ5m5/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:09:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Image Added To Cart\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete image from cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imagePrice\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/cart/:imageId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								":imageId"
+							],
+							"variable": [
+								{
+									"key": "imageId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "delete the image from the cart and updates the total price of images in the cart"
+					},
+					"response": [
+						{
+							"name": "deletion succeeded",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"imagePrice\" : 300\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/cart/:imageId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"cart",
+										":imageId"
+									],
+									"variable": [
+										{
+											"key": "imageId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-3vhhu833kbpCZl5tbZJmC/0rANI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:52:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Image Removed From Cart\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cartId\" : 6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/api/v1/cart/1"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:03:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url}}/api/v1/cart",
+						"description": "delete the user's cart in addition to the images in this cart"
+					},
+					"response": [
+						{
+							"name": "deletion succeded",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-OCD8eh18ay8zqoLAajJc5BYUrRs\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:59:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cart Deleted Successfully\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/cart"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 18:04:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Checkout Endpoints",
+			"item": [
+				{
+					"name": "make a payment intent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"totalPrice\" : 1150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/v1/payment-intent",
+						"description": "create a payment intent using stripe api and retrieve the client secret for this user"
+					},
+					"response": [
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"totalPrice\" : 1150\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/api/v1/payment-intent"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 19:36:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				},
+				{
+					"name": "make an order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDkyMDk0MCwiZXhwIjoxNzE1MDkzNzQwfQ.ofpE3pyYgCs76WhUgPqdX6eHR71NFqpLrMwQuj4BKGY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{url}}/api/v1/order",
+						"description": "- when the succeeded checkout page appears and user clicks continue\n    \n- order will be created and will has images that has been bought\n    \n- after that the cart will be deleted"
+					},
+					"response": [
+						{
+							"name": "order created successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/order"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-pme4gfiOTml3hsK/FRE//K7FsQk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 19:51:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order Created Successfully\"\n}"
+						},
+						{
+							"name": "jwt expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "http://localhost:5000/api/v1/order"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-QYo6FstsqBkNL7DpRffWXbhMTQ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 19:57:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jwt expired\",\n    \"err\": \"TokenExpiredError\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

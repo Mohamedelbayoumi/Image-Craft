@@ -6,10 +6,15 @@ const fileFilter = (req, file, cb) => {
         cb(null, true)
     }
     else {
-        cb('Error: Images Only!', false)
+        req.fileType = '(PNG OR JPG OR JPEG) Images Only!'
+        cb(null, false, req.fileType)
     }
 }
 
 const storage = multer.memoryStorage()
 
-module.exports = multer({ storage: storage, fileFilter: fileFilter }).single('image')
+module.exports = multer({
+    storage: storage,
+    fileFilter: fileFilter,
+    limits: { fileSize: 52428800 } // max file size = 50 mb
+}).single('image')

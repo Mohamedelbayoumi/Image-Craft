@@ -1,8 +1,8 @@
 const router = require('express').Router()
 
-const {validateUserLogin, validateUserRegister, validateNewPassword} = require('../middleware/validator')
+const { validateUserLogin, validateUserRegister, validateNewPassword } = require('../middleware/validator')
 
-const checkAuthentication = require('../middleware/isAuth')
+const { rateLimiter, resetPasswordAndSignupLimiter, loginLimiter } = require("../config/rateLimit")
 
 const {
     generateAccessToken,
@@ -11,30 +11,24 @@ const {
     forgetPassword,
     verifyOtp,
     createNewPassword,
-    completeUserData,
-    logoutUser
+    logoutUser,
+    authWithGoogle
 } = require('../controllers/auth')
 
-router.get('/newToken', generateAccessToken)
+router.get('/newToken', rateLimiter, generateAccessToken)
 
-router.get('/registerwithgoogle')
+router.get('/google-authentication', rateLimiter, authWithGoogle)
 
-router.patch('/user-data-completion', checkAuthentication, completeUserData)
+router.post('/signup', resetPasswordAndSignupLimiter, validateUserRegister, registerUser)
 
-router.get('/loginwithgoogle') // suggestion n7ot google in query string
+router.post('/login/:device', loginLimiter, validateUserLogin, loginUser)
 
-router.post('/oAuth/:device')
+router.post('/passwordReset', resetPasswordAndSignupLimiter, forgetPassword)
 
-router.post('/signup', validateUserRegister, registerUser)
+router.post('/otp-verification', rateLimiter, verifyOtp)
 
-router.post('/login/:device',validateUserLogin, loginUser)
+router.patch('/new-password', rateLimiter, validateNewPassword, createNewPassword)  // add validator to check equality of password and confirm password and also many things
 
-router.post('/passwordReset', forgetPassword)
-
-router.post('/otp-verification/', verifyOtp)
-
-router.patch('/new-password', validateNewPassword, createNewPassword)  // add validator to check equality of password and confirm password and also many things
-
-router.post("/logout",  logoutUser)
+router.post("/logout", rateLimiter, logoutUser)
 
 module.exports = router

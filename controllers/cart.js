@@ -1,10 +1,10 @@
-require('express-async-errors')
 
 const Image = require('../models/image')
 const Cart = require('../models/cart')
+const ApiError = require('../util/customError')
 
 
-async function addToCart(req, res) {
+async function addToCart(req, res, next) {
 
     const userId = req.userId
 
@@ -20,17 +20,17 @@ async function addToCart(req, res) {
     if (!cart) {
         cart = await Cart.create({
             UserId: userId,
-            totalPrice: imagePrice
+            totalPrice: +imagePrice
         })
     }
 
     else {
 
         if (await cart.hasImage(imageId)) {
-            return res.status(403).json({ error: "Image Already Exits In The Cart" })
+            return next(new ApiError("Image Already Exits In The Cart", 403))
         }
 
-        const totalPrice = cart.totalPrice + imagePrice
+        const totalPrice = cart.totalPrice + +imagePrice
         await cart.update({
             totalPrice
         })
@@ -42,7 +42,7 @@ async function addToCart(req, res) {
     res.status(201).json({ message: "Image Added To Cart" })
 }
 
-async function getCartImages(req, res) {
+async function getCartImages(req, res, next) {
 
     const userId = req.userId
 
@@ -63,7 +63,7 @@ async function getCartImages(req, res) {
     })
 
     if (!cartImages) {
-        return res.status(404).json({ message: "No Cart Found" })
+        return next(new ApiError("No Cart Found", 404))
     }
 
     res.status(200).json({
@@ -72,7 +72,7 @@ async function getCartImages(req, res) {
     })
 }
 
-async function deleteImageFromCart(req, res) {
+async function deleteImageFromCart(req, res, next) {
 
     const userId = req.userId
 
@@ -90,7 +90,7 @@ async function deleteImageFromCart(req, res) {
     })
 
     if (!cart) {
-        return res.status(404).json({ error: "No Cart Found" })
+        return next(new ApiError("No Cart Found", 404))
     }
 
     const totalPrice = cart.totalPrice - imagePrice

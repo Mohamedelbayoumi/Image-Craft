@@ -1,94 +1,96 @@
 const Joi = require('joi')
 
-function validateImage (req, res, next) {
-    
+const ApiError = require('../util/customError')
+
+function validateImage(req, res, next) {
+
     const imageSchema = Joi.object({
-        caterogy : Joi.string().min(5).max(8).required(),
+        caterogy: Joi.string().min(2).max(8).required(),
         imageName: Joi.string().trim().required(),
-        price : Joi.number().required(),
-        description : Joi.string().required(),
-        location : Joi.string().required()
+        price: Joi.number().required(),
+        description: Joi.string().required(),
+        location: Joi.string().required()
     })
-    
-     const {error} = imageSchema.validate(req.body)
+
+    const { error } = imageSchema.validate(req.body)
 
     if (error) {
-        next(error)
+        next(new ApiError(error, 422))
     }
     else {
         next()
     }
-  
+
 }
 
-function validateUserLogin (req, res, next) {
+function validateUserLogin(req, res, next) {
 
     const loginSchema = Joi.object({
 
-        email : Joi.string().email().trim().required(),
+        email: Joi.string().email().trim().required(),
 
-        password : Joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9@#$.!^&*-_]{5,30}$')).required()
+        password: Joi.string()
+            .pattern(new RegExp('^[a-zA-Z0-9@#$.!^&*-_]{5,30}$')).required()
 
     })
 
-    const {error} = loginSchema.validate(req.body)
+    const { error } = loginSchema.validate(req.body)
 
     if (error) {
-        next(error)
+        next(new ApiError(error, 422))
     }
     else {
         next()
     }
 }
 
-function validateUserRegister (req, res, next) {
+function validateUserRegister(req, res, next) {
 
     const registerSchema = Joi.object({
 
-        userName : Joi.string().trim()
-        .pattern(new RegExp('^[a-zA-Z0-9_.-]+$')).required(),
+        userName: Joi.string().trim()
+            .pattern(new RegExp('^[a-zA-Z0-9_.-]+$')).required(),
 
-        phoneNumber : Joi.string().max(20).required(),
+        phoneNumber: Joi.string().max(20).required(),
 
-        email : Joi.string().email().trim().required(),
+        email: Joi.string().email().trim().required(),
 
-        password : Joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9@#$.!^&*-_]{5,30}$')).required() 
+        password: Joi.string()
+            .pattern(new RegExp('^[a-zA-Z0-9@#$.!^&*-_]{5,30}$')).required()
 
     })
 
-    const {error} = registerSchema.validate(req.body)
+    const { error } = registerSchema.validate(req.body)
 
     if (error) {
-        next(error)
+        next(new ApiError(error, 422))
     }
     else {
         next()
     }
 
 }
-    function validateNewPassword(req, res, next) {
+function validateNewPassword(req, res, next) {
 
-        const resetSchema = Joi.object({
+    const resetSchema = Joi.object({
 
-            password : Joi.string()
+        password: Joi.string()
             .pattern(new RegExp('^[a-zA-Z0-9@#$.!^&*-_]{5,30}$')).required(),
 
-            confirmPassword : Joi.ref('password')
+        confirmPassword: Joi.ref('password')
 
-        })
+    })
 
-        const {error} = resetSchema.validate(req.body)
+    const { error } = resetSchema.validate(req.body)
 
-        if (error) {
-            next(error)
-        }
-        else {
-            next()
-        }
-
+    if (error) {
+        next(new ApiError(error, 422))
     }
+    else {
+        next()
+    }
+
+}
 
 module.exports = {
     validateImage,

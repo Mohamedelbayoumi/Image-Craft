@@ -7,37 +7,22 @@ const {
     getCaterogyImages,
     getImagesByName,
     getImagesByPrice,
-    deleteUploadedImage
+    deleteUploadedImage,
+    searchByImage,
+    downloadImage
 } = require('../controllers/image')
 
 const passTheImage = require('../middleware/upload')
 const { validateImage } = require('../middleware/validator')
 const checkAuthentication = require('../middleware/isAuth')
-
-/**
- * @swagger
- * components:
- *  schemas:
- *      image:
- *            type: object
- *            required
- */
-
-/**
- * @swagger
- * /api/v1/images:
- *  get:
- *      responses:
- *          200:
- *              description: gets all images
- *              content:
- *                  application/json
- */
+const checkDownload = require('../middleware/downloadCheck')
 
 
 router.get('/images', getImages)
 
 router.post('/images', checkAuthentication, passTheImage, validateImage, uploadImage)
+
+router.post("/searching-by-image", passTheImage, searchByImage)
 
 router.get('/images/search', getImagesByName)
 
@@ -49,7 +34,8 @@ router.get('/images/caterogy/:caterogy', getCaterogyImages)
 
 router.delete("/image", checkAuthentication, deleteUploadedImage)
 
-// router.get('/images/:id')
+router.get("/image-downloading/:imageId", checkAuthentication, checkDownload, downloadImage)
+
 
 
 

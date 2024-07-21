@@ -1,6 +1,6 @@
 const router = require("express").Router()
 
-const {addToCart, getCartImages, deleteImageFromCart, deleteCart} = require('../controllers/cart')
+const { addToCart, getCartImages, deleteImageFromCart, deleteCart } = require('../controllers/cart')
 
 const checkAuthentication = require('../middleware/isAuth')
 
